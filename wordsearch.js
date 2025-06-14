@@ -19,23 +19,23 @@ const transpose = function(matrix) {
 };
 
 
-const wordSearch = (letters, word) => { 
-    if (!word || !letters || typeof word !== "string" || !Array.isArray(letters) || letters.length === 0) {
-        return false;
-    }
-    const verticalJoin = transpose(letters).map(ls => ls.join(''));
-    const horizontalJoin = letters.map(ls => ls.join(''))
-   
-    for (l of horizontalJoin) {
-        if (l.includes(word)) return true
-    }
-
-
-    for (l of verticalJoin) {
-    if (l.includes(word)) return true
-    }
+const wordSearch = (letters, word) => {
+  if (!word || !letters || typeof word !== "string" || !Array.isArray(letters) || letters.length === 0) {
     return false;
-    
-}
+  }
+  const verticalJoin = transpose(letters).map(ls => ls.join(''));
+  const horizontalJoin = letters.map(ls => ls.join(''));
+   
+  for (const l of horizontalJoin) {
+    if (l.includes(word)) return true;
+  }
 
-module.exports = wordSearch
+
+  for (const l of verticalJoin) {
+    if (l.includes(word)) return true;
+  }
+  return false;
+    
+};
+
+module.exports = wordSearch;
